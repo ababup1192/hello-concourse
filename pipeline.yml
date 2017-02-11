@@ -15,7 +15,7 @@ resources:
 
 # Jobの定義
 jobs:
-- name: hello-job
+- name: job-hello
   public: true # UI上でJobの結果をログイン不要で公開するかどうか
   plan:
   - get: hello
@@ -28,3 +28,12 @@ jobs:
   - put: result
     params:
       repository: updated-result
+- name: job-show-result
+  public: true
+  plan:
+  - get: hello
+  - get: result
+    trigger: true
+    passed: [ job-hello ]
+  - task: show-result
+    file: hello/show-result.yml
