@@ -20,6 +20,7 @@ jobs:
   plan:
   - get: hello
     trigger: true # Resourceに変更があれば自動でジョブを実行するかどうか
+  - get: result
   - task: run-hello
     file: hello/hello.yml
   - task: commit-log
