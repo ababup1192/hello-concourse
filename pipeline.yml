@@ -6,6 +6,12 @@ resources:
   type: git
   source:
     uri: https://github.com/ababup1192/hello-concourse.git
+- name: result
+  type: git
+  source:
+    uri: git@gist.github.com:4054dbbf37296123c02c3ef709a154f2.git
+    private_key: {{github-private-key}}
+    branch: master
 
 # Jobの定義
 jobs:
@@ -16,3 +22,8 @@ jobs:
     trigger: true # Resourceに変更があれば自動でジョブを実行するかどうか
   - task: run-hello
     file: hello/hello.yml
+  - task: commit-log
+    file: hello/commit-log.yml
+  - put: result
+    params:
+      repository: updated-result
