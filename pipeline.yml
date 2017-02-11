@@ -1,11 +1,13 @@
-rsources:
+---
+# Resourceの定義
+resources:
 # Git Resourceの定義
 - name: hello
   type: git
   source:
     uri: https://github.com/ababup1192/hello-concourse.git
 
-       # Jobの定義
+# Jobの定義
 jobs:
 - name: hello-job
   public: true # UI上でJobの結果をログイン不要で公開するかどうか
