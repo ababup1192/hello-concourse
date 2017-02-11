@@ -1,2 +1,2 @@
 #!/bin/bash
-find .
+echo "aaaaa"
